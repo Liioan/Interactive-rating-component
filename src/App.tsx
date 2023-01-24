@@ -21,7 +21,7 @@ function App() {
           ))}
         </div>
 
-        <button className='bg-custom-orange text-center h-12 w-full rounded-full text-custom-white text-base uppercase font-700 tracking-widest'>
+        <button className='bg-custom-orange text-center h-12 w-full rounded-full text-custom-white text-base uppercase font-700 tracking-widest hover:bg-custom-white hover:text-custom-orange transition duration-200'>
           sumbit
         </button>
       </div>
