@@ -21,7 +21,7 @@ module.exports = {
       },
       backgroundImage: {
         gradient:
-          'radial-gradient(76.82% 98.76% at 50% -9.53%, rgba(37, 45, 55, 0.895833) 0%, rgba(18, 20, 23, 0.8) 100%)',
+          'radial-gradient(76.82% 98.76% at 50% -9.53%, rgba(37, 45, 55, 0.895833) 0%, rgba(18, 20, 23, 0.56) 100%)',
       },
     },
   },

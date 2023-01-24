@@ -10,11 +10,11 @@ export function Card() {
   const { IsSubmited } = context;
 
   return (
-    <div className='card bg-gradient h-[480px] w-[450px] rounded-2xl bg-custom-darkBlue p-8  '>
+    <div className='card bg-gradient h-[450px] w-[430px] rounded-3xl bg-custom-darkBlue p-8  '>
       <AnimatePresence>
         {!IsSubmited && (
           <motion.div
-            className='flex flex-col gap-8 '
+            className='flex flex-col gap-6 '
             initial={{ opacity: 0, translateX: '-100%' }}
             animate={{ opacity: 1, translateX: 0 }}
             exit={{ opacity: 0, translateX: '100%' }}
@@ -27,7 +27,7 @@ export function Card() {
       <AnimatePresence>
         {IsSubmited && (
           <motion.div
-            className='flex flex-col gap-10 items-center'
+            className='flex flex-col gap-8 items-center'
             initial={{ opacity: 0, translateX: '-100%' }}
             animate={{ opacity: 1, translateX: 0 }}
             transition={{ duration: 1, ease: 'anticipate', delay: 1 }}
