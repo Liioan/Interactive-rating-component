@@ -1,29 +1,42 @@
-import { RatingButton } from './components/RatingButton';
-import Star from './images/icon-star.svg';
+import { useStateInfo } from './context/StateInfoContext';
+import { motion, AnimatePresence } from 'framer-motion';
+
+import { RatingCard } from './components/RatingCard';
+import { ThankYouCard } from './components/ThankYouCard';
 
 function App() {
+  const context = useStateInfo();
+  if (!context) return null;
+  const { IsSubmited } = context;
+
   return (
     <div className='App bg-custom-veryDarkBlue h-screen flex justify-center items-center font-overpass'>
-      <div className='card bg-gradient h-[480px] w-[450px] rounded-2xl bg-custom-darkBlue p-8 flex flex-col gap-8'>
-        <div className='star rounded-full bg-custom-darkBlue w-12 h-12 flex items-center justify-center     bg-opacity-50'>
-          <img src={Star} alt='' />
-        </div>
-
-        <h1 className='font-700 text-custom-white text-3xl'>How did we do?</h1>
-        <p className='text-custom-mediumGrey tracking-wide text-lg'>
-          Please let us know how we did with your support request. All feedback
-          is appreciated to help us improve our offering!{' '}
-        </p>
-
-        <div className='buttons flex justify-around items-center'>
-          {[1, 2, 3, 4, 5].map(rating => (
-            <RatingButton key={rating} rating={rating} />
-          ))}
-        </div>
-
-        <button className='bg-custom-orange text-center h-12 w-full rounded-full text-custom-white text-base uppercase font-700 tracking-widest hover:bg-custom-white hover:text-custom-orange transition duration-200'>
-          sumbit
-        </button>
+      <div className='card bg-gradient h-[480px] w-[450px] rounded-2xl bg-custom-darkBlue p-8  '>
+        <AnimatePresence>
+          {!IsSubmited && (
+            <motion.div
+              className='flex flex-col gap-8 '
+              initial={{ opacity: 0, translateX: '-100%' }}
+              animate={{ opacity: 1, translateX: 0 }}
+              exit={{ opacity: 0, translateX: '100%' }}
+              transition={{ duration: 1, ease: 'anticipate' }}
+            >
+              <RatingCard />
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <AnimatePresence>
+          {IsSubmited && (
+            <motion.div
+              className='flex flex-col gap-10 items-center'
+              initial={{ opacity: 0, translateX: '-100%' }}
+              animate={{ opacity: 1, translateX: 0 }}
+              transition={{ duration: 1, ease: 'anticipate', delay: 1 }}
+            >
+              <ThankYouCard />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
